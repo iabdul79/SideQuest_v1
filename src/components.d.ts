@@ -9,9 +9,12 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     AppHeader: typeof import('./components/AppHeader.vue')['default']
+    DetailedJobCard: typeof import('./components/DetailedJobCard.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
+    JobSearchBar: typeof import('./components/JobSearchBar.vue')['default']
     NavigationDrawer: typeof import('./components/NavigationDrawer.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ShortJobCard: typeof import('./components/ShortJobCard.vue')['default']
   }
 }
