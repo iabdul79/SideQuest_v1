@@ -1,22 +1,19 @@
 <template>
   <v-container>
     <v-row>
-      <JobSearchBar />
-    </v-row>
-    <v-row>
       <v-col cols="8">
         <v-container class="pa-0 job_list_container">
-          <v-row v-for="job in appStore.getCandidatesJobsList" :key="job.id">
+          <v-row v-for="job in appStore.getManagerJobsList" :key="job.id">
             <v-col>
-              <ShortJobCard :id="job.id" :title="job.title" :subheading="job.subtitle" :description="job.shortDescription"
-                :status="job.status" @routeToJobCard="routeToJobCard(job.id)"/>
+              <ShortJobCard :id="job.id" :title="job.title" :subheading="job.subtitle"
+                :description="job.shortDescription" :status="job.status" @routeToJobCard="routeToJobCard(job.id)" />
             </v-col>
           </v-row>
         </v-container>
       </v-col>
 
       <v-col cols="4">
-        <ProfileCard />
+        <JobPosterForm />
       </v-col>
     </v-row>
   </v-container>
@@ -26,12 +23,11 @@
 import { useAppStore } from '@/stores/app';
 import { useRouter } from 'vue-router'
 
+const appStore = useAppStore()
 const router = useRouter()
 
-const appStore = useAppStore()
-
 function routeToJobCard(id: string) {
-  router.push({ path: `/job/${id}` })
+  router.push({ path: `/post/${id}` })
 }
 </script>
 

@@ -7,9 +7,9 @@
     <v-app-bar-title>B.Professional Search</v-app-bar-title>
 
     <template v-slot:append>
-      <v-btn icon="mdi-heart"></v-btn>
+      <v-btn icon="mdi-theme-light-dark" @click="$emit('toggle-theme')"></v-btn>
 
-      <v-btn icon="mdi-magnify"></v-btn>
+      <v-btn icon="mdi-information"></v-btn>
 
       <v-btn icon="mdi-dots-vertical"></v-btn>
     </template>
@@ -17,6 +17,4 @@
 </template>
 
 <script lang="ts" setup>
-
-  //
 </script>

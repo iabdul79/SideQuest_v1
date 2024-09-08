@@ -3,14 +3,15 @@
     <v-card>
       <v-card-item>
         <v-card-title>{{ activeJob.title }}</v-card-title>
-        <v-card-subtitle>
-          <span class="me-1">{{ activeJob.subtitle }}</span>
-        </v-card-subtitle>
+
         <v-card-subtitle>
           <span class="me-1">Job id: {{ activeJob.id }}</span>
         </v-card-subtitle>
+        <v-card-subtitle>
+          <span class="me-1"> {{ activeJob.subtitle }}</span>
+        </v-card-subtitle>
         <template v-slot:append>
-          <v-chip class="ma-2" color="blue" label>
+          <v-chip class="ma-2" :color="activeJob.status === 'closed' ? 'error' : 'primary'" label>
             {{ activeJob.status }}
           </v-chip>
         </template>
@@ -19,7 +20,7 @@
         <div class="py-2">
           <v-row align="center" class="mx-0">
             <div>
-              Hours required: 4.5
+              Hours required: {{ activeJob.hoursRequired }}
             </div>
           </v-row>
           <v-row align="center" class="mx-0">
@@ -39,9 +40,9 @@
       </v-card-text>
       <v-divider></v-divider>
       <v-card-actions class="mx-2">
-        <span><i>Posted by: {{ activeJob.postedBy }}</i></span>
+        <span><i>Posted on: {{ activeJob.postedDate }}</i></span>
         <v-spacer></v-spacer>
-        <v-btn color="primary" variant="tonal">Apply</v-btn>
+        <v-btn variant="tonal" color="error">Close</v-btn>
       </v-card-actions>
     </v-card>
   </v-container>
@@ -51,8 +52,7 @@
 import { useAppStore } from '@/stores/app';
 
 const appStore = useAppStore()
-const jobId =  window.location.pathname.split("/").pop()
-appStore.updateActiveCandidateJobId(`${jobId}` || '')
-const activeJob = appStore.getCandidateActiveJobFromId
-
+const jobId =  window.location.pathname.split("/").pop();
+appStore.updateActiveManagerJobId(`${jobId}` || '');
+const activeJob = appStore.getManagerActiveJobFromId
 </script>
